@@ -138,6 +138,9 @@ use [nombre_base_datos]
 ## MODELO DE BUSQUEDA
 ## db.[nombre_coleccion].funcion({argumentos de busqueda})
 
+En este caso la funcion sería find, update, delete, etc. \
+No la variable $nombre_variable como en los otros casos. 
+
 ```shell
 db.listingsAndReviews.find({beds:{$eq:5}})
 ```
