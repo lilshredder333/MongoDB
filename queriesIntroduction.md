@@ -88,6 +88,12 @@ OR
 {cleaning_fee:{$exists:true}}
 ```
 
+## Mostrar documentos donde [nombre_de_campo] NO exista
+```shell
+{cleaning_fee:{$exists:false}}
+```
+
+
 ## Mostrar los documentos si se cumple condición
 
 ```shell
@@ -104,4 +110,34 @@ OR
 
 ```shell
 {$and:[{cleaning_fee:{$exists:true, $lte:50}}, {property_type:{$eq:"House"}}]}
+```
+
+## Mostrar el tipo de un campo (int, string, array...)
+
+```shell
+# buscar por nombre de tipo
+{beds:{$type:["int","long"]}}
+
+# buscar por numero de tipo --> 16 equivale a "int" y 18 a "long"
+{beds:{$type:[16,18]}}
+
+# buscar el contrario al tipo segun num
+# esta consulta también mostraría los documentos en los que el campo "beds" NO exista
+{beds:{$not:{$type:[16,18]}}}
+
+```
+
+# Como hacer consultas desde _MONGOSH
+
+## Primero decidimos qué bbdd usamos
+
+```shell
+use [nombre_base_datos]
+```
+
+## MODELO DE BUSQUEDA
+## db.[nombre_coleccion].funcion({argumentos de busqueda})
+
+```shell
+db.listingsAndReviews.find({beds:{$eq:5}})
 ```
