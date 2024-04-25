@@ -64,7 +64,7 @@ Busqueda con colección de valores :)
 {property_type: {$ne: "Bed and Breakfast}}
 ```
 
-## Busqueda con varios operadores lógicos
+## Busqueda AND y OR
 
 AND
 
@@ -76,5 +76,32 @@ OR
 
 ```shell
 # $lte representa "less than equal" y $gte representa "greater than equal" 
-{$or:{beds:{$lte:2},{beds:{$gte:10}}}}
+{$or:{beds:{$lte:2},{beds:{$gte:11}}}}
+```
+
+
+#  En un documento puede que haya campos que no existan en otros docs!!
+
+## Mostar documentos donde [nombre_de_campo] exista
+
+```shell
+{cleaning_fee:{$exists:true}}
+```
+
+## Mostrar los documentos si se cumple condición
+
+```shell
+#esto es como un IF statement
+{cleaning_fee:{$exists:true, $lte:50}}
+
+#se podría hacer con un AND
+{$and:[{cleaning_fee:{$exists:true}}, {cleaning_fee:{$lte:50}}]}
+```
+
+# Ejercicios
+
+## Muestra todos los documentos que contengan el campo cleaning fee, su valor sea menor o igual que 50 y que la propiedad sea una casa. 
+
+```shell
+{$and:[{cleaning_fee:{$exists:true, $lte:50}}, {property_type:{$eq:"House"}}]}
 ```
