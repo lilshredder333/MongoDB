@@ -24,4 +24,26 @@ db.albums.insertOne(db.albums.insertOne({title:"The Steps Mix", duration:1500, d
 }
 ```
 
+# Insert without using the Date() function
+
+```shell
+
+# example 1
+db.albums.insertOne(db.albums.insertOne({title:"The Steps Mix", duration:1500, date: Date("2023-05-06T00:00:00.000Z")})) 
+
+# example 2
+db.albums.insertOne({title:"The Steps Mix",duration:1500,date:new Date("2020-05-06T00:00:00Z"),formats:{vinillo:true,cd:true,cassette:false}})
+```
+
+# Finding data 
+
+## The find() function is very similar to SELECT from SQL
+
+```shell
+
+# this query will pull up all the documents in the db
+
+db.albums.find()
+
+```
 
