@@ -138,6 +138,17 @@ db.albums.deleteOne({_id:ObjectId("6633bfd2a35758d76728813e")})
 }
 ```
 
+## Delete multiple documents 
+
+```shell
+db.albums.deleteMany({duration:1600})
+
+{
+  acknowledged: true,
+  deletedCount: 3
+}
+```  
+
 # Finding data 
 
 ## The find() function is very similar to SELECT from SQL
